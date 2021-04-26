@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BlogDemo.Application.Contracts.Article;
 using BlogDemo.Domain.ArticleAgg;
 
 namespace BlogDemo.Infrastructure.EFCore.Repository
@@ -13,6 +14,32 @@ namespace BlogDemo.Infrastructure.EFCore.Repository
         public ArticleRepository(BlogContext db)
         {
             _db = db;
+        }
+
+        public List<ArticleViewModel> GetArticles()
+        {
+            return _db.Articles.Where(a => a.IsRemoved==false).Select(a => new ArticleViewModel
+            {
+                ArticleId = a.ArticleId,
+                Picture = a.Picture,
+                PictureAlt = a.PictureAlt,
+                ShortDescription = a.ShortDescription,
+                Title = a.Title,
+                Body = a.Body
+            }).ToList();
+        }
+
+        public ArticleViewModel ShowArticle(int id)
+        {
+            return _db.Articles.Select(a => new ArticleViewModel()
+            {
+                ArticleId = a.ArticleId,
+                Picture = a.Picture,
+                PictureAlt = a.PictureAlt,
+                ShortDescription = a.ShortDescription,
+                Title = a.Title,
+                Body = a.Body
+            }).FirstOrDefault(a => a.ArticleId == id);
         }
 
         public void Create(Article article)

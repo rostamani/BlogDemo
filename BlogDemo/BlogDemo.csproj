@@ -19,7 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BlogDemo.Application\BlogDemo.Application.csproj" />
     <ProjectReference Include="..\BlogDemo.Infrastructure.EFCore\BlogDemo.Infrastructure.EFCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Pictures\" />
   </ItemGroup>
 
 </Project>

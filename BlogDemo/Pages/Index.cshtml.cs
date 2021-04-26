@@ -5,21 +5,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogDemo.Application.Contracts.Article;
+using BlogDemo.Application.Contracts.Category;
+using BlogDemo.Domain.ArticleAgg;
 
 namespace BlogDemo.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly IArticleApplication _articleApplication;
+        public List<ArticleViewModel> Articles { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IArticleApplication articleApplication)
         {
-            _logger = logger;
+            _articleApplication = articleApplication;
         }
+
 
         public void OnGet()
         {
-
+            Articles = _articleApplication.GetArticles();
         }
     }
 }

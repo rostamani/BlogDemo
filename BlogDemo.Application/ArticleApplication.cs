@@ -17,7 +17,7 @@ namespace BlogDemo.Application
         }
         public void Create(CreateArticle command)
         {
-            var article=new Article(command.Title,command.Picture,command.PictureAlt,command.PictureTitle,command.ShortDescription,command.Body
+            var article=new Article(command.Title,command.Picture,command.PictureAlt,command.ShortDescription,command.Body
             ,command.CategoryId);
             _articleRepository.Create(article);
             _articleRepository.SaveChanges();
@@ -28,9 +28,19 @@ namespace BlogDemo.Application
             var article = _articleRepository.Get(command.ArticleId);
             if (article!=null)
             {
-                article.Edit(command.Title,command.Picture,command.PictureAlt,command.PictureTitle,command.ShortDescription,command.Body,command.CategoryId);
+                article.Edit(command.Title,command.Picture,command.PictureAlt,command.ShortDescription,command.Body,command.CategoryId);
                 _articleRepository.SaveChanges();
             }
+        }
+
+        public List<ArticleViewModel> GetArticles()
+        {
+            return _articleRepository.GetArticles();
+        }
+
+        public ArticleViewModel ShowArticle(int id)
+        {
+            return _articleRepository.ShowArticle(id);
         }
     }
 }

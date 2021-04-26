@@ -18,7 +18,8 @@ namespace BlogDemo.Domain.CategoryAgg
         public Category(string name)
         {
             Name = name;
-            Articles=new List<Article>();
+            Articles = new List<Article>();
+            CreationDate = DateTime.Now;
         }
 
         public void Edit(string name)

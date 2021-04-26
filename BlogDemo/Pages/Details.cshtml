@@ -1,0 +1,19 @@
+﻿@page "{id:int}"
+@model BlogDemo.Pages.DetailsModel
+@{
+    ViewData["Title"] = Model.Article.Title;
+}
+
+
+<div class="col-12 mb-3">
+    <h1>@Model.Article.Title</h1>
+</div>
+<div class="col-12 mb-3">
+    <img src="~/Pictures/@Model.Article.Picture" alt="@Model.Article.PictureAlt" class="img-fluid">
+</div>
+<div class="col-12">
+    <p class="article-content">
+        @Model.Article.Body
+    </p>
+</div>
+

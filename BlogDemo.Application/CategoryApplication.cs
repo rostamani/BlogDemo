@@ -17,7 +17,7 @@ namespace BlogDemo.Application
 
         public void Create(CreateCategory command)
         {
-            if (_categoryRepository.Exists(command.Name))
+            if (!_categoryRepository.Exists(command.Name))
             {
                 var category = new Category(command.Name);
                 _categoryRepository.Create(category);
@@ -37,7 +37,7 @@ namespace BlogDemo.Application
 
         public List<CategoryViewModel> Search(string name)
         {
-            throw new NotImplementedException();
+            return _categoryRepository.Search(name);
         }
     }
 }

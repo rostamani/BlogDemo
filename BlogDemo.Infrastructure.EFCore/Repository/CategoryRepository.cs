@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BlogDemo.Application.Contracts.Category;
 using BlogDemo.Domain.CategoryAgg;
+using BlogDemo.Helpers.Convertors;
 
 namespace BlogDemo.Infrastructure.EFCore.Repository
 {
@@ -39,7 +40,18 @@ namespace BlogDemo.Infrastructure.EFCore.Repository
 
         public List<CategoryViewModel> Search(string name)
         {
-            throw new NotImplementedException();
+            var query = _db.Categories.Select(c => new CategoryViewModel()
+            {
+                Id = c.Id,
+                Name = c.Name,
+                CreationDate = c.CreationDate.ToPersianDate()
+            });
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(c => c.Name.Contains(name));
+            }
+
+            return query.OrderBy(c => c.Name).ThenBy(c => c.Id).ToList();
         }
     }
 }

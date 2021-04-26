@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlogDemo.Domain\BlogDemo.Domain.csproj" />
+    <ProjectReference Include="..\BlogDemo.Helpers\BlogDemo.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

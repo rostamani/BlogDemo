@@ -1,0 +1,30 @@
+﻿@page
+@model BlogDemo.Pages.Category.IndexModel
+@{
+    ViewData["Title"] = "گروه ها";
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Creation Date</th>
+        <th>Operation</th>
+    </tr>
+    </thead>   
+    <tbody>
+        @for (int i = 0; i < Model.Categories.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model.Categories[i].Name</td>
+                <td>@Model.Categories[i].CreationDate</td>
+                <td>
+                    <a class="btn btn-warning" asp-page="Edit">ویرایش</a>
+                    <a class="btn btn-danger" asp-page="Delete">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

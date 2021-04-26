@@ -13,7 +13,7 @@ namespace BlogDemo.Infrastructure.EFCore.Mapping
         {
             builder.ToTable("Articles");
             builder.HasKey(b => b.ArticleId);
-            builder.Property(a => a.Title).HasMaxLength(250).IsRequired();
+            builder.Property(a => a.Title).HasMaxLength(250);
             builder.Property(a => a.ShortDescription).HasMaxLength(500).IsRequired();
 
             builder.Property(a => a.Body).IsRequired();

@@ -11,7 +11,7 @@ namespace BlogDemo.Domain.ArticleAgg
         public string Title { get; set; }
         public string Picture { get; set; }
         public string PictureAlt { get; set; }
-        public string PictureTitle { get; set; }
+
         public string ShortDescription { get; set; }
         public string Body { get; set; }
         public DateTime CreationDate { get; set; }
@@ -21,13 +21,12 @@ namespace BlogDemo.Domain.ArticleAgg
         public Category Category { get; set; }
 
 
-        public Article(string title,string picture,string pictureAlt,string pictureTitle,string shortDescription,string body,int categoryId)
+        public Article(string title,string picture,string pictureAlt,string shortDescription,string body,int categoryId)
         {
             Title = title;
             Body = body;
             Picture = picture;
             PictureAlt = pictureAlt;
-            PictureTitle = pictureTitle;
             ShortDescription = shortDescription;
             CategoryId = categoryId;
             CreationDate = DateTime.Now;
@@ -43,13 +42,12 @@ namespace BlogDemo.Domain.ArticleAgg
             IsRemoved = false;
         }
 
-        public void Edit(string title, string picture, string pictureAlt, string pictureTitle, string shortDescription, string body,int categoryId)
+        public void Edit(string title, string picture, string pictureAlt, string shortDescription, string body,int categoryId)
         {
             Title = title;
             Body = body;
             Picture = picture;
             PictureAlt = pictureAlt;
-            PictureTitle = pictureTitle;
             ShortDescription = shortDescription;
             CategoryId = categoryId;
         }

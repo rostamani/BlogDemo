@@ -8,7 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogDemo.Application;
+using BlogDemo.Application.Contracts.Article;
+using BlogDemo.Application.Contracts.Category;
+using BlogDemo.Domain.ArticleAgg;
+using BlogDemo.Domain.CategoryAgg;
 using BlogDemo.Infrastructure.EFCore;
+using BlogDemo.Infrastructure.EFCore.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogDemo
@@ -26,6 +32,12 @@ namespace BlogDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddTransient<IArticleRepository, ArticleRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IArticleApplication, ArticleApplication>();
+            services.AddTransient<ICategoryApplication, CategoryApplication>();
+
             services.AddDbContext<BlogContext>(options =>
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("BlogDemoConnectionString"));
