@@ -33,6 +33,16 @@ namespace BlogDemo.Application
             }
         }
 
+        public void Remove(int id)
+        {
+            _articleRepository.Remove(id);
+        }
+
+        public void Restore(int id)
+        {
+           _articleRepository.Restore(id);
+        }
+
         public List<ArticleViewModel> GetArticles()
         {
             return _articleRepository.GetArticles();
@@ -41,6 +51,11 @@ namespace BlogDemo.Application
         public ArticleViewModel ShowArticle(int id)
         {
             return _articleRepository.ShowArticle(id);
+        }
+
+        public EditArticle GetDetails(int id)
+        {
+            return _articleRepository.GetDetails(id);
         }
     }
 }

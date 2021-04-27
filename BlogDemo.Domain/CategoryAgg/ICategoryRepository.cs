@@ -12,5 +12,6 @@ namespace BlogDemo.Domain.CategoryAgg
         void Create(Category category);
         void SaveChanges();
         List<CategoryViewModel> Search(string name);
+        EditCategory GetDeatils(int id);
     }
 }

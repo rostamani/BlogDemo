@@ -8,6 +8,8 @@ namespace BlogDemo.Application.Contracts.Category
     {
         List<CategoryViewModel> Search(string name);
 
+        EditCategory GetDetails(int id);
+
         void Create(CreateCategory command);
 
         void Edit(EditCategory command);

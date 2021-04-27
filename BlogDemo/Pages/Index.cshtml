@@ -16,74 +16,25 @@
     {
         <div class="col-4 mb-2">
             <div class="card">
-                <img src="./Pictures/@article.Picture" class="card-img-top" alt="@article.PictureAlt">
+                <img src="~/Pictures/@article.Picture" class="card-img-top" alt="@article.PictureAlt">
                 <div class="card-body">
                     <h5 class="card-title">@article.Title</h5>
                     <p class="card-text">
-                       @article.ShortDescription
+                        @article.ShortDescription
                     </p>
                     <a asp-page="Details" asp-route-id="@article.ArticleId" class="btn btn-primary">ادامه مطلب</a>
+                    <a asp-page="Edit" asp-route-id="@article.ArticleId" class="btn btn-warning">ویرایش</a>
+                    @if (@article.IsRemoved)
+                    {
+                        <a asp-page-handler="Restore" asp-route-id="@article.ArticleId" class="btn btn-success">بازیابی</a>
+                    }
+                    else
+                    {
+                        <a asp-page-handler="Remove" asp-route-id="@article.ArticleId" class="btn btn-danger">حذف</a>
+                    }
+
                 </div>
             </div>
         </div>
     }
-    @*<div class="col-4 mb-2">
-        <div class="card">
-            <img src="./images/camp.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">عنوان مقاله</h5>
-                <p class="card-text">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                </p>
-                <a href="#" class="btn btn-primary">ادامه مطلب</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-4 mb-2">
-        <div class="card">
-            <img src="./images/phanoos.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">عنوان مقاله</h5>
-                <p class="card-text">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                </p>
-                <a href="#" class="btn btn-primary">ادامه مطلب</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-4 mb-2">
-        <div class="card">
-            <img src="./images/photography.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">عنوان مقاله</h5>
-                <p class="card-text">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                </p>
-                <a href="#" class="btn btn-primary">ادامه مطلب</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-4 mb-2">
-        <div class="card">
-            <img src="./images/cityinlenz.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">عنوان مقاله</h5>
-                <p class="card-text">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                </p>
-                <a href="#" class="btn btn-primary">ادامه مطلب</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-4 mb-2">
-        <div class="card">
-            <img src="./images/camp.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">عنوان مقاله</h5>
-                <p class="card-text">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                </p>
-                <a href="#" class="btn btn-primary">ادامه مطلب</a>
-            </div>
-        </div>
-    </div>*@
+   

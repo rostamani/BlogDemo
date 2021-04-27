@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@model BlogDemo.Pages.Category.EditModel
+@{
+    ViewData["Title"] = "ویرایش گروه";
+}
+
+
+<form class="mr-auto ml-auto" method="post">
+    <input type="hidden" asp-for="EditCategory.Id" />
+    <div class="form-group">
+        <label asp-for="EditCategory.Name">عنوان گروه</label>
+        <input class="form-control" asp-for="EditCategory.Name">
+    </div>
+    <button type="submit" class="btn btn-primary">ویرایش</button>
+</form>
+@section Scripts{
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

@@ -53,5 +53,14 @@ namespace BlogDemo.Infrastructure.EFCore.Repository
 
             return query.OrderBy(c => c.Name).ThenBy(c => c.Id).ToList();
         }
+
+        public EditCategory GetDeatils(int id)
+        {
+            return _db.Categories.Select(c => new EditCategory()
+            {
+                Id = c.Id,
+                Name = c.Name
+            }).FirstOrDefault(c => c.Id == id);
+        }
     }
 }

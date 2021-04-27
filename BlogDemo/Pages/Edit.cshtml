@@ -1,0 +1,51 @@
+﻿@page "{id:int}"
+@model BlogDemo.Pages.EditModel
+@{
+    ViewData["Title"] = "ویرایش مقاله";
+}
+
+<form class="mr-auto ml-auto" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="EditArticle.ArticleId"/>
+    <input type="hidden" asp-for="EditArticle.Picture"/>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="EditArticle.CategoryId">گروه</label>
+            <select asp-for="EditArticle.CategoryId" asp-items="Model.Categories" class="form-control"></select>
+            <span asp-validation-for="EditArticle.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="EditArticle.Title">عنوان مقاله</label>
+            <input class="form-control" id="title" asp-for="EditArticle.Title">
+            <span asp-validation-for="EditArticle.Title" class="text-danger"></span>
+        </div>
+        @*<div class="form-group col-md-6">
+                <label asp-for="EditArticle.Picture">عکس</label>
+                <input class="form-control" id="picture" asp-for="EditArticle.Picture">
+                <span asp-validation-for="EditArticle.Picture" class="text-danger"></span>
+            </div>*@
+        <div class="form-group col-md-6">
+            <label asp-for="EditArticle.Picture"></label>
+            <input type="file" name="imageUpload" class="form-control"/>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="picuteAlt">ALT عکس</label>
+            <input class="form-control" id="picuteAlt" asp-for="EditArticle.PictureAlt">
+            <span asp-validation-for="EditArticle.PictureAlt" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <label asp-for="EditArticle.ShortDescription">توضیحات کوتاه</label>
+            <textarea class="form-control" id="smallDescription" asp-for="EditArticle.ShortDescription"></textarea>
+            <span asp-validation-for="EditArticle.ShortDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="EditArticle.Body">متن مقاله</label>
+        <textarea rows="5" type="text" class="form-control" id="body" asp-for="EditArticle.Body"></textarea>
+        <span asp-validation-for="EditArticle.Body" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">ارسال</button>
+</form>
+
+@section Scripts{
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

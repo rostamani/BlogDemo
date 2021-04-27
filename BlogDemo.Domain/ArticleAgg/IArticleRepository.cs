@@ -10,7 +10,10 @@ namespace BlogDemo.Domain.ArticleAgg
         Article Get(int id);
         List<ArticleViewModel> GetArticles();
         ArticleViewModel ShowArticle(int id);
+        EditArticle GetDetails(int id);
         void Create(Article article);
         void SaveChanges();
+        void Remove(int id);
+        void Restore(int id);
     }
 }

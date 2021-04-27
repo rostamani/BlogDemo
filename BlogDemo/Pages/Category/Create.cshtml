@@ -8,6 +8,10 @@
     <div class="form-group">
         <label asp-for="CreateCategory.Name">عنوان گروه</label>
         <input class="form-control" asp-for="CreateCategory.Name">
+        <span asp-validation-for="CreateCategory.Name"></span>
     </div>
     <button type="submit" class="btn btn-primary">افزودن</button>
 </form>
+@section Scripts{
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

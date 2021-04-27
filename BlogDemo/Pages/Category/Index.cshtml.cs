@@ -23,5 +23,6 @@ namespace BlogDemo.Pages.Category
         {
             Categories = _categoryApplication.Search(name);
         }
+
     }
 }

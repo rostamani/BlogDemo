@@ -15,6 +15,11 @@ namespace BlogDemo.Application
             _categoryRepository = categoryRepository;
         }
 
+        public EditCategory GetDetails(int id)
+        {
+            return _categoryRepository.GetDeatils(id);
+        }
+
         public void Create(CreateCategory command)
         {
             if (!_categoryRepository.Exists(command.Name))

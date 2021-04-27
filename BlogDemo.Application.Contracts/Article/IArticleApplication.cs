@@ -8,7 +8,10 @@ namespace BlogDemo.Application.Contracts.Article
     {
         void Create(CreateArticle command);
         void Edit(EditArticle command);
+        void Remove(int id);
+        void Restore(int id);
         List<ArticleViewModel> GetArticles();
         ArticleViewModel ShowArticle(int id);
+        EditArticle GetDetails(int id);
     }
 }

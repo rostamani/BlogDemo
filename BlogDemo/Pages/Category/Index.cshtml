@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "گروه ها";
 }
-
+<p><a class="btn btn-primary" asp-page="Create">افزودن گروه جدید</a></p>
+<hr/>
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -21,8 +22,7 @@
                 <td>@Model.Categories[i].Name</td>
                 <td>@Model.Categories[i].CreationDate</td>
                 <td>
-                    <a class="btn btn-warning" asp-page="Edit">ویرایش</a>
-                    <a class="btn btn-danger" asp-page="Delete">حذف</a>
+                    <a class="btn btn-warning" asp-page="Edit" asp-route-id="@Model.Categories[i].Id" >ویرایش</a>
                 </td>
             </tr>
         }

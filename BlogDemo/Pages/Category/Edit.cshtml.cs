@@ -8,32 +8,33 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BlogDemo.Pages.Category
 {
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
-        public CreateCategory CreateCategory { get; set; }
         private readonly ICategoryApplication _categoryApplication;
 
-        public CreateModel(ICategoryApplication categoryApplication)
+        public EditModel(ICategoryApplication categoryApplication)
         {
             _categoryApplication = categoryApplication;
         }
-        public void OnGet()
-        {
 
+        [BindProperty]
+        public EditCategory EditCategory { get; set; }
+
+        public void OnGet(int id)
+        {
+            EditCategory = _categoryApplication.GetDetails(id);
         }
 
-        public IActionResult OnPost(CreateCategory createCategory)
+        public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                _categoryApplication.Create(createCategory);
+                _categoryApplication.Edit(EditCategory);
                 return RedirectToPage("Index");
             }
 
-            else
-            {
-                return RedirectToPage("Create");
-            }
+            return RedirectToPage("Edit",new {id=EditCategory.Id});
+
         }
     }
 }
